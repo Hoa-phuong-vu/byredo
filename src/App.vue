@@ -1,16 +1,21 @@
 <template>
-  <router-link to="/"><img src="./assets/logo.svg"></router-link>
-  
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">Products</router-link>
-    <router-link to="/contact">Contacts</router-link>
+    <div class="logo-container">
+      <router-link to="/"><img src="./assets/logo.svg" alt="logo"></router-link>
+    </div>
+      <div class="links">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">Products</router-link> |
+        <router-link to="/contact">Contact</router-link>
+      </div>
+    
   </nav>
   <router-view/>
 </template>
 
 <style>
 body {
+  margin: 0;
   background-color: #F5F4F2;
   color: black;
   font-family: 'Boska', serif;
@@ -19,14 +24,24 @@ body {
   font-family: 'Boska', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 nav {
   padding: 10px;
   display: flex;
-  flex-direction: column;
-  text-align: right;
+  justify-content: space-between;
+  align-items: center; /* Vertically align the logo and links */
+  background-color: white;
+}
+
+.logo-container {
+  display: flex; /* Ensure the logo container uses flex layout */
+}
+
+
+.links {
+  display: flex;
+  justify-content: space-between;
 }
 
 nav a {
@@ -40,7 +55,6 @@ nav a.router-link-exact-active {
 
 img {
   width: 125px;
-  display: block;
   padding: 10px;
 }
 </style>

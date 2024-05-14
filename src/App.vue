@@ -1,8 +1,10 @@
 <template>
+  <router-link to="/"><img src="./assets/logo.svg"></router-link>
+  
   <nav>
-    <router-link to="/"><img src="./assets/logo.svg"></router-link>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">Products</router-link>
+    <router-link to="/contact">Contacts</router-link>
   </nav>
   <router-view/>
 </template>
@@ -17,11 +19,14 @@ body {
   font-family: 'Boska', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  
 }
 
 nav {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
 }
 
 nav a {
@@ -30,11 +35,12 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #EBE9E6;
+  color: #bebebe;
 }
 
-nav img {
+img {
   width: 125px;
   display: block;
+  padding: 10px;
 }
 </style>

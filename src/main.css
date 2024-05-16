@@ -139,7 +139,7 @@
     top: 16px;
   }
   
-  .cart-link {
+  .links {
     position: absolute;
     right: 16px;
     top: 16px;
@@ -204,4 +204,8 @@
   .remove-button {
     flex: 1;
     margin: auto;
+  }
+
+  .cartImg {
+    width: 1.5em;
   }

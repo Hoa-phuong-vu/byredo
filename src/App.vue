@@ -1,19 +1,15 @@
 <template>
-  <div class="logo-wrap">
-    <router-link to="/"><img src="./assets/logo.svg" alt="logo"></router-link>
-  </div>
-
-  <div class="page-wrap">
-    <router-view/>
-  </div>
-  
+  <NavBar/>
 </template>
 
 <script>
+import NavBar from "@/components/NavBar.vue"
 
 export default {
   name: 'HomeView',
-  components: {}
+  components: {
+    NavBar,
+  }
 }
 </script>
 

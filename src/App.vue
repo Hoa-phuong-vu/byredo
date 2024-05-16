@@ -1,30 +1,20 @@
 <template>
-  <Navigation />
+  <div class="logo-wrap">
+    <router-link to="/"><img src="./assets/logo.svg" alt="logo"></router-link>
+  </div>
+
+  <div class="page-wrap">
+    <router-view/>
+  </div>
+  
 </template>
 
 <script>
-import Navigation from "@/components/NavBar";
 
 export default {
   name: 'HomeView',
-  components: {Navigation}
+  components: {}
 }
 </script>
 
-<style>
-  html {
-	font-size: 62.5%;
-  }
-  body {
-    margin: 0;
-    background-color: #F5F4F2;
-    color: black;
-  
-    font-size: 1.6rem;
-  }
-  #app {
-    font-family: 'Boska', serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-</style>
+

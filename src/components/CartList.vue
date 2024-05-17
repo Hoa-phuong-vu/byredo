@@ -1,0 +1,20 @@
+<template>
+     <div 
+    class="product-container"
+    v-for="product in cartItems"
+    :key="product.id">
+    <img class="product-image" :src="product.image" :alt="product.name"/>
+    <div class="details-wrap">
+      <h3>{{product.name}}</h3>
+      <p>{{product.price}}</p>
+    </div>
+    <button class="remove-button">Remove from Cart</button>
+  </div> 
+</template>
+
+<script>
+export default {
+    name: 'CartList', 
+    props: ['cartItems']
+}
+</script>

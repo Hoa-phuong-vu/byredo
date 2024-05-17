@@ -1,4 +1,5 @@
 <template>
+  <div v-if="product">
     <div class="img-wrap">
       <img :src="product.image" :alt="product.name"/>
     </div>
@@ -7,11 +8,17 @@
       <h3 class="price"> {{product.price}}</h3>
       <button class="add-to-cart">Add to cart</button>
     </div>
+  </div>
+  <div v-else>
+    <PageNotFound />
+  </div>
+   
   </template>
 
 <script>
 
 import {products} from '../temp-data';
+import PageNotFound from './PageNotFound.vue';
 
 export default {
     name: "DetailsView",
@@ -19,6 +26,9 @@ export default {
       return {
         product: products.find(product => product.id === this.$route.params.productId )
       }
+    },
+    components: {
+      PageNotFound
     }
 }
 </script>

@@ -1,31 +1,37 @@
 <template>
   <h1>Shopping Cart</h1>
-  <CartList :cartItems="cartItems"/>
   <div v-if="cartItems.length > 0">
-  <button class="checkout-button">Proceed to Checkout</button> 
+    <CartList @remove-from-cart="removeFromCart($event)" :cartItems="cartItems" />
+    <button class="checkout-button">Proceed to Checkout</button>
   </div>
   <div v-if="cartItems.length === 0">
-    Your Cart is Empty
+    You current have no items in your cart!
   </div>
 </template>
 
 <script>
-import CartList from '@/components/CartList.vue';
 import axios from 'axios';
-
+import CartList from '@/components/CartList.vue';
 
 export default {
-    name: "CartView",
-    components: {
-      CartList
+  name: "ShoppingCartPage",
+  components: {
+    CartList,
+  },
+  data() {
+    return {
+      cartItems: [],
+    }
+  },
+  methods: {
+    async removeFromCart(productId) {
+      const response = await axios.delete(`/api/users/103837395/cart/${productId}`);
+      const updatedCart = response.data;
+      this.cartItems = updatedCart;
     },
-    data() {
-      return {
-        cartItems: [],
-      }
-    },
-    async created() {
-    const response = await axios.get(`/api/users/103837395/cart`);
+  },
+  async created() {
+    const response = await axios.get('/api/users/103837395/cart');
     const cartItems = response.data;
     this.cartItems = cartItems;
   }

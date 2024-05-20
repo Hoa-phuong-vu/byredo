@@ -49,7 +49,7 @@ async function start() {
     res.json(populatedCart);
   });
 
-  app.delete('/users/:userId/cart/:productId', async(req, res) => {
+  app.delete('/api/users/:userId/cart/:productId', async(req, res) => {
     const userId = req.params.userId;
     const productId = req.params.productId;
 

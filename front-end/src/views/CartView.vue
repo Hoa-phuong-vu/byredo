@@ -11,7 +11,8 @@
 
 <script>
 import CartList from '@/components/CartList.vue';
-import {cartItems} from '../temp-data';
+import axios from 'axios';
+
 
 export default {
     name: "CartView",
@@ -20,8 +21,13 @@ export default {
     },
     data() {
       return {
-        cartItems,
+        cartItems: [],
       }
-    }
+    },
+    async created() {
+    const response = await axios.get(`/api/users/103837395/cart`);
+    const cartItems = response.data;
+    this.cartItems = cartItems;
+  }
 }
 </script>

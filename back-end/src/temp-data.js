@@ -5,24 +5,7 @@
 // import bal from './assets/Bal.jpg';
 
 export const cartItems = [
-  {
-    id: '1',
-    name: "Bal d'Afrique",
-    price: '$300',
-    // image: bal,
-  },
-  {
-    id: '2',
-    name: "Blanche",
-    price: '$303',
-    // image: blanche,
-  },
-  {
-    id: '3',
-    name: "Gypsy Water",
-    price: '$301',
-    // image: gypsy,
-  }
+  '1', '2'
 ];
 
 export const products = [

@@ -1,12 +1,12 @@
 <template>
   <div v-if="product">
     <div class="img-wrap">
-      <img :src="product.image" :alt="product.name"/>
+      <img :src="product.imageUrl" :alt="product.name"/>
     </div>
     <div class="product-details">
       <h1> {{product.name}}</h1>
       <h3 class="price"> {{product.price}}</h3>
-      <button class="add-to-cart">Add to cart</button>
+      <button @click="addToCart" class="add-to-cart">Add to cart</button>
     </div>
   </div>
   <div v-else>
@@ -16,19 +16,29 @@
   </template>
 
 <script>
-
-import {products} from '../temp-data';
+import axios from 'axios';
 import PageNotFound from './PageNotFound.vue';
 
 export default {
     name: "DetailsView",
     data() {
       return {
-        product: products.find(product => product.id === this.$route.params.productId )
+        product: {},
+      }
+    },
+    methods: {
+      async addToCart() {
+        await axios.post('/api/users/103837395/cart', {id: this.$route.params.productId});
+        alert('successfully added item to cart!');
       }
     },
     components: {
       PageNotFound
-    }
+    },
+    async created() {
+    const response = await axios.get(`/api/products/${this.$route.params.productId}`);
+    const product = response.data;
+    this.product = product;
+  }
 }
 </script>

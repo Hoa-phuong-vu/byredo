@@ -5,7 +5,8 @@
 
 <script>
 import ProductsList from '@/components/ProductsList.vue';
-import {products} from '../temp-data';
+import axios from 'axios';
+// import {products} from '../temp-data';
 export default {
     name: "ProductsView",
     components: {
@@ -13,8 +14,13 @@ export default {
     },
     data() {
       return {
-        products,
+        products: [],
       }
+    },
+    async created() {
+      const response = await axios.get('/api/products');
+      const products = response.data;
+      this.products = products;
     }
 }
 </script>

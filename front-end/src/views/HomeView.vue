@@ -22,28 +22,3 @@ export default {
 }
 </script>
 
-<style>
-.home {
-  font-family: 'Boska', serif;
-}
-
-.header {
-  background-image: url('../assets/BYREDO.jpg');
-  height: 500px;
-}
-
-.button {
-  border-radius: 0.5em;
-  font-size: 3rem;
-  border: 0;
-  color: #615c5ca4;
-  background-color: white;
-  font-weight: bold;
-}
-
-.button:hover {
-  color: white;
-  background-color: #bebebe;
-  border: #bebebe
-}
-</style>

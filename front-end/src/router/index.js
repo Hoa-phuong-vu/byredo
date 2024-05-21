@@ -5,6 +5,7 @@ import CartView from '../views/CartView.vue';
 import DetailsView from '../views/DetailsView.vue';
 import NotFoundPage from '../views/PageNotFound.vue';
 import Login from '../views/LogIn.vue';
+import AboutPage from '../views/AboutView.vue';
 const routes = [
   {
     path: '/',
@@ -26,9 +27,13 @@ const routes = [
     component: NotFoundPage
   },
   {
-    path: '/Login',
+    path: '/login',
     component: Login
   },
+  {
+    path: '/about',
+    component: AboutPage
+  }
 ]
 
 const router = createRouter({

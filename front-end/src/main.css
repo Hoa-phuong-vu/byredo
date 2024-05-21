@@ -3,6 +3,9 @@
     box-sizing: border-box;
     font-family: 'Rowan', serif;
   }
+  /* html {
+    scroll-behavior: smooth;
+  } */
   
   .page-wrap {
     min-height: 100vh;

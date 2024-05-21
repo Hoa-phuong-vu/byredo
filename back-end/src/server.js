@@ -17,7 +17,7 @@ async function start() {
 
   app.get('/api/products', async (req, res) => {
     const products = await db.collection('products').find({}).toArray();
-    res.send(products);
+    res.json(products);
   });
 
   async function populateCartIds(ids) {

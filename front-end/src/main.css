@@ -15,13 +15,20 @@
   button {
     background-color: black;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     color: white;
-    cursor: pointer;
-    font-size: 16px;
+    font-size: 1.3rem;
     font-weight: bold;
     outline: 0;
     padding: 16px;
+
+  }
+
+  button:hover {
+    cursor: pointer;
+    color: black;
+    background-color: #F5F4F2;
+    transition: 0.7s;
   }
   
   h1 {
@@ -37,17 +44,20 @@
   }
   
   .checkout-button {
-    width: 100%;
+    width: 95vw;
+    margin: 1em;
   }
   
   .product-container {
-    align-content: 'center';
-    border-bottom: 1px solid #ddd;
+    align-content: center;
     display: flex;
     padding: 16px;
-    width: 100%;
+    width: 95vw;
+    margin: 0 auto;
+    border-bottom: 1px solid #ddd;
   }
   
+
   .product-image {
     flex: 1;
     height: 100px;
@@ -60,22 +70,14 @@
   }
   
   .remove-button {
-    flex: 1;
-    margin: auto;
+    text-decoration: underline;
+    cursor: pointer;
   }
   
-  .img-wrap {
-    margin-top: 32px;
-    text-align: center;
-  }
   
-  .img-wrap img {
-    width: 400px;
-  }
-  
-  .product-details {
-    padding: 16px;
-    position: relative;
+  .total {
+    margin-left: 1.2em;
+    padding: 10px;
   }
   
   .add-to-cart {
@@ -88,11 +90,6 @@
     margin-top: 16px;
   }
   
-  .price {
-    position: absolute;
-    top: 24px;
-    right: 16px;
-  }
   
   
   .grey-button {
@@ -128,13 +125,18 @@
     text-decoration: none;
   }
   
-  
+  /*products*/
   .grid-wrap {
     display: flex;
     justify-content: flex-start;
     gap: 16px;
     flex-wrap: wrap;
+<<<<<<< Updated upstream
     margin-top: 16px;
+=======
+    gap: 10px;
+    margin-top: 10px;
+>>>>>>> Stashed changes
   }
   
   .product-item {
@@ -166,18 +168,43 @@
     width: 100%;
   }
   
+<<<<<<< Updated upstream
   .product-container {
     align-content: 'center';
     border-bottom: 1px solid #ddd;
+=======
+  /*details */
+
+  .container {
+>>>>>>> Stashed changes
     display: flex;
-    padding: 16px;
-    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .img-wrap {
+    margin-top: 32px;
+    
   }
   
-  .product-image {
-    flex: 1;
-    height: 100px;
-    max-width: 100px;
+  .img-wrap img {
+    width: 400px;
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    width: 29.7em;
+    background-color: white;
+    height: fit-content;
+    margin-top: 32px;
+    border-radius: 5px;
+    gap: 1em;
   }
   
   .details-wrap {

@@ -4,12 +4,13 @@
         class="product-item"
         v-for="product in products"
         :key="product.id">
+        <router-link :to="'/products/' + product.id">
             <img :src="product.imageUrl" :alt="product.name"/>
-            <h3 class="product-name">{{ product.name}}</h3>
+            <div class="product-info">
+            <p class="product-name">{{ product.name}}</p>
             <p class="product-price"> {{ product.price}}</p>
-            <router-link :to="'/products/' + product.id">
-            <button>View Details</button>
-            </router-link>
+            </div>
+        </router-link>
         </div>
     </div>
 </template>

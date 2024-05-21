@@ -6,6 +6,7 @@ import DetailsView from '../views/DetailsView.vue';
 import NotFoundPage from '../views/PageNotFound.vue';
 import Login from '../views/LogIn.vue';
 import AboutPage from '../views/AboutView.vue';
+import SignUp from '../views/SignUp.vue';
 const routes = [
   {
     path: '/',
@@ -29,6 +30,10 @@ const routes = [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/signup',
+    component: SignUp
   },
   {
     path: '/about',

@@ -1,14 +1,16 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Boska', serif;
+    font-family: 'Rowan', serif;
   }
   
   .page-wrap {
     margin: auto;
-  
     min-height: 100vh;
+    background-color: #F5F4F2;
   }
+
+  
   
   button {
     background-color: black;
@@ -23,7 +25,7 @@
   }
   
   h1 {
-    border-bottom: 1px solid black;
+    
     margin: 0;
     margin-top: 16px;
     padding: 16px;
@@ -101,49 +103,34 @@
     width: 100%;
   }
   
+  /* Nav Bar */
   .nav-bar {
-    border-bottom: 1px solid #ddd;
-    height: 75px;
+    position: fixed;
+    background-color: white;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .logo-wrap {
     width: 125px;
-    padding: 10px;
-  }
-  
-  .products-link {
-    text-align: center;
-    display: block;
-    color: black;
-    font-size: 22px;
-    left: 32px;
-    position: absolute;
-    top: 16px;
-    text-decoration: none;
-  }
-  
-  .products-link h1 {
-    margin: 0;
-  }
-  
-  .nav-buttons-wrap {
-    position: absolute;
-    right: 16px;
-    top: 16px;
-  }
-  
-  .nav-buttons-wrap {
-    position: absolute;
-    right: 16px;
-    top: 16px;
   }
   
   .links {
-    position: absolute;
-    right: 16px;
-    top: 16px;
+    display: flex;
+    gap: 1.5em; /* space between links */
+    align-items: center;
   }
+  
+  .links a {
+    color: black;
+    text-decoration: none;
+  }
+  
   
   .grid-wrap {
     display: flex;
@@ -209,3 +196,33 @@
   .cartImg {
     width: 1.5em;
   }
+
+  .cartImg-login {
+    width: 1.35em;
+  }
+
+/* 404 page*/
+
+.notFound {
+  text-align: center;
+  padding: 10em;
+  
+}
+
+.notFound p {
+  font-size: 5em;
+  font-weight: 500;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.notFound button {
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.notFound button:hover {
+  color: black;
+  background-color: white;
+  transition: background-color 0.5s, color 0.5s;
+}

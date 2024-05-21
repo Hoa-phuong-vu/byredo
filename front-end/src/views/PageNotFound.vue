@@ -1,5 +1,9 @@
 <template>
-    <h1>404 Page Not Found</h1>
+   <div class="notFound">
+    <h1>404</h1>
+    <p>PAGE NOT FOUND</p>
+    <button >CONTINUE SHOPPING</button>
+   </div>
 </template>
 
 <script>

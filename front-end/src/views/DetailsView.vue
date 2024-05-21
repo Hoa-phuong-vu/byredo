@@ -12,6 +12,7 @@
       <button class="grey-button" v-if="itemIsInCart">
         Item is already in cart
       </button>
+      <!-- <button class="sign-in" @click="SignIn">Sign in to add to cart</button> -->
     </div>
   </div>
   <div v-else>
@@ -23,6 +24,7 @@
 <script>
 import axios from 'axios';
 import PageNotFound from './PageNotFound.vue';
+// import {getAuth,  sendSignInLinkToEmail,isSignInWithEmailLink,signInWithEmailLink} from 'firebase/auth';
 
 
 export default {
@@ -44,12 +46,31 @@ export default {
       async addToCart() {
         await axios.post('/api/users/103837395/cart', {id: this.$route.params.productId});
         alert('successfully added item to cart!');
-      }
+      },
+      // async SignIn() {
+      //   const email = prompt('please enter email to sign in');
+      //   const auth = getAuth();
+      //   const actionCodeSetting = {
+      //     url: 'http://localhost/products/${this.$route.params.productId}',
+      //     handleCodeInApp: true,
+      //   }
+      //   await sendSignInLinkToEmail(auth, email, actionCodeSetting);
+      //   alert('check your email');
+      //   window.localStorage.setItem('emailForSignIn', email);
+      // }
     },
     components: {
       PageNotFound
     },
     async created() {
+    // const auth = getAuth();
+    // if(isSignInWithEmailLink(auth, window.location.href)) {
+    //   const email = window.localStorage.getItem('emailForSignIn');
+    //   await signInWithEmailLink(auth, email, window.location.href);
+    //   alert('successful');
+    //   window.localStorage.removeItem('emailForSignIn');
+    // }
+
     const response = await axios.get(`/api/products/${this.$route.params.productId}`);
     const product = response.data;
     this.product = product;

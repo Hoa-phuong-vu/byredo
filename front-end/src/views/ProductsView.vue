@@ -6,7 +6,7 @@
 <script>
 import ProductsList from '@/components/ProductsList.vue';
 import axios from 'axios';
-// import {products} from '../temp-data';
+
 export default {
     name: "ProductsView",
     components: {

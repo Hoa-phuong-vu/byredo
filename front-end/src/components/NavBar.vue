@@ -11,9 +11,6 @@
         <router-link to="/cart"><img src="@/assets/cart.svg" alt="logo" class="cartImg"></router-link>
       </div>
     </div>
-    <div class="page-wrap">
-      <router-view/>
-    </div>
   </div>
 </template>
 

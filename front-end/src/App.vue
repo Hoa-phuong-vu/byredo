@@ -1,5 +1,8 @@
 <template>
   <NavBar/>
+  <div class="page-wrap">
+      <router-view/>
+  </div>
   <FooterSection/>
 </template>
 

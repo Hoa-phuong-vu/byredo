@@ -4,6 +4,7 @@ import ProductsView from '../views/ProductsView.vue';
 import CartView from '../views/CartView.vue';
 import DetailsView from '../views/DetailsView.vue';
 import NotFoundPage from '../views/PageNotFound.vue';
+import Login from '../views/LogIn.vue';
 const routes = [
   {
     path: '/',
@@ -23,7 +24,11 @@ const routes = [
   }, {
     path: '/:pathMatch(.*)*',
     component: NotFoundPage
-  }
+  },
+  {
+    path: '/Login',
+    component: Login
+  },
 ]
 
 const router = createRouter({

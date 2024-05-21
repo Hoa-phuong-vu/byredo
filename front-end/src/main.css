@@ -5,8 +5,8 @@
   }
   
   .page-wrap {
-    margin: auto;
     min-height: 100vh;
+    padding-top: 60px; 
     background-color: #F5F4F2;
   }
 
@@ -94,9 +94,6 @@
     right: 16px;
   }
   
-  .green-button {
-    background-color: green;
-  }
   
   .grey-button {
     background-color: #888;
@@ -196,7 +193,7 @@
   .cartImg {
     width: 1.5em;
   }
-
+  
   .cartImg-login {
     width: 1.35em;
   }
@@ -224,5 +221,28 @@
 .notFound button:hover {
   color: black;
   background-color: white;
-  transition: background-color 0.5s, color 0.5s;
+  transition: background-color 0.7s, color 0.7s;
+}
+
+/*footer*/
+.footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: #888 solid 1px;
+  padding: 0.5em;
+}
+
+.footnav {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.footnav a {
+  text-decoration: none;
+  color: black;
+}
+
+.github {
+  width: 1.7em;
 }

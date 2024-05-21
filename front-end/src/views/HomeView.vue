@@ -118,7 +118,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:1.5em 7em;
+  padding:1.5em 10em;
 }
 .random {
   width: 20em;

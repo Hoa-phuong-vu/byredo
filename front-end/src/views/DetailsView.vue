@@ -51,7 +51,7 @@ export default {
     methods: {
       async addToCart() {
         await axios.post('/api/users/103837395/cart', {id: this.$route.params.productId});
-        alert('successfully added item to cart!');
+        
 
         const cartResponse = await axios.get("/api/users/103837395/cart");
         this.cartItems = cartResponse.data;

@@ -1,6 +1,14 @@
 <template>
-  <h1>ALL PRODUCTS</h1>
-    <ProductsList :products="products"/>
+  <div>
+    <h1>ALL PRODUCTS</h1>
+    <h3 class="h3">Filter</h3>
+    <div class="filter">
+      <p @click="filterProducts('All')">All</p>
+      <p @click="filterProducts('Perfume')">Perfume</p>
+      <p @click="filterProducts('Discovery Set')">Discovery Set</p>
+    </div>
+    <ProductsList :products="filteredProducts"/>
+  </div>
 </template>
 
 <script>
@@ -8,19 +16,48 @@ import ProductsList from '@/components/ProductsList.vue';
 import axios from 'axios';
 
 export default {
-    name: "ProductsView",
-    components: {
-      ProductsList
-    },
-    data() {
-      return {
-        products: [],
-      }
-    },
-    async created() {
-      const response = await axios.get('/api/products');
-      const products = response.data;
-      this.products = products;
+  name: "ProductsView",
+  components: {
+    ProductsList,
+  },
+  data() {
+    return {
+      products: [],
+      filter: 'All',
+      filteredProducts: [],
     }
+  },
+  async created() {
+    const response = await axios.get('/api/products');
+    this.products = response.data;
+    // Initially, display all products
+    this.filteredProducts = this.products;
+  },
+  methods: {
+    filterProducts(category) {
+      if (category === 'All') {
+        this.filteredProducts = this.products;
+      } else {
+        this.filteredProducts = this.products.filter(product => product.cat === category);
+      }
+    }
+  },
 }
 </script>
+
+<style>
+.filter {
+  cursor: pointer;
+  padding: 1em;
+}
+
+.p:hover {
+  text-decoration: underline;
+}
+
+.h3 {
+  border-bottom: 1px solid #ddd;
+  border-top: #ddd 1px solid;
+  padding: 1em;
+}
+</style>

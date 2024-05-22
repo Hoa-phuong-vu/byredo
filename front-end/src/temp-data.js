@@ -66,7 +66,8 @@ export const products = [
     id: '7',
     name: 'Discovery Set Boise',
     price: '$59',
-    imageUrl: '/images/boise.webp'
+    imageUrl: '/images/boise.webp',
+    cat: 'Discovery Set'
   },
   {
     id: '8',

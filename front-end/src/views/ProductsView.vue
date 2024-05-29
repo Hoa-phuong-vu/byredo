@@ -7,6 +7,11 @@
       <p @click="filterProducts('Perfume')">Perfume</p>
       <p @click="filterProducts('Discovery Set')">Discovery Set</p>
     </div>
+    <h1>Sort</h1>
+    <div class="sort">
+      <button @click="sortProducts('Ascending')">Ascending</button>
+      <button @click="sortProducts('Descending')">Descending</button>
+    </div>
     <ProductsList :products="filteredProducts"/>
   </div>
 </template>

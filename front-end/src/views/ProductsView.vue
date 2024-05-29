@@ -9,8 +9,8 @@
     </div>
     <h1>Sort</h1>
     <div class="sort">
-      <button @click="sortProducts('Ascending')">Ascending</button>
-      <button @click="sortProducts('Descending')">Descending</button>
+      <p @click="sortProducts('Ascending')">Ascending</p>
+      <p @click="sortProducts('Descending')">Descending</p>
     </div>
     <ProductsList :products="filteredProducts"/>
   </div>
@@ -44,6 +44,13 @@ export default {
         this.filteredProducts = this.products;
       } else {
         this.filteredProducts = this.products.filter(product => product.cat === category);
+      }
+    },
+    sortProducts(order) {
+      if (order === 'Ascending') {
+        this.filteredProducts.sort((a, b) => (a.price > b.price) ? 1 : -1);
+      } else if (order === 'Descending') {
+        this.filteredProducts.sort((a, b) => (a.price < b.price) ? 1 : -1);
       }
     }
   },

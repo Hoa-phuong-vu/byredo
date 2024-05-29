@@ -1,16 +1,30 @@
 <template>
   <div>
     <h1>ALL PRODUCTS</h1>
-    <h3 class="h3">Filter</h3>
     <div class="filter">
-      <p @click="filterProducts('All')">All</p>
-      <p @click="filterProducts('Perfume')">Perfume</p>
-      <p @click="filterProducts('Discovery Set')">Discovery Set</p>
+      <h3 class="h3">Filter</h3>
+      <div class="custom-select-container">
+        <select v-model="filter" class="custom-select">
+          <option value="All">All</option>
+          <option value="Perfume">Perfume</option>
+          <option value="Discovery Set">Discovery Set</option>
+        </select>
+        <i class="dropdown-icon">
+          <img src="@/assets/dropdown.png" alt="dropdown" class="dropdown"/>
+        </i>
+      </div>
     </div>
-    <h1>Sort</h1>
     <div class="sort">
-      <p @click="sortProducts('Ascending')">Ascending</p>
-      <p @click="sortProducts('Descending')">Descending</p>
+      <h3 class="h3">Sort</h3>
+      <div class="custom-select-container right-align">
+        <select v-model="sortOrder" class="custom-select">
+          <option value="Ascending">Ascending</option>
+          <option value="Descending">Descending</option>
+        </select>
+        <i class="dropdown-icon">
+          <img src="@/assets/dropdown.png" alt="dropdown" class="dropdown">
+        </i> 
+      </div>
     </div>
     <ProductsList :products="filteredProducts"/>
   </div>
@@ -29,6 +43,7 @@ export default {
     return {
       products: [],
       filter: 'All',
+      sortOrder: 'Ascending',
       filteredProducts: [],
     }
   },
@@ -39,37 +54,73 @@ export default {
     this.filteredProducts = this.products;
   },
   methods: {
-    filterProducts(category) {
-      if (category === 'All') {
+    filterProducts() {
+      if (this.filter === 'All') {
         this.filteredProducts = this.products;
       } else {
-        this.filteredProducts = this.products.filter(product => product.cat === category);
+        this.filteredProducts = this.products.filter(product => product.cat === this.filter);
       }
     },
-    sortProducts(order) {
-      if (order === 'Ascending') {
+    sortProducts() {
+      if (this.sortOrder === 'Ascending') {
         this.filteredProducts.sort((a, b) => (a.price > b.price) ? 1 : -1);
-      } else if (order === 'Descending') {
+      } else if (this.sortOrder === 'Descending') {
         this.filteredProducts.sort((a, b) => (a.price < b.price) ? 1 : -1);
       }
     }
   },
+  watch: {
+    filter: 'filterProducts',
+    sortOrder: 'sortProducts'
+  }
 }
 </script>
 
 <style>
-.filter {
-  cursor: pointer;
+.filter,
+.sort {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  border-top: #ddd 1px solid;
   padding: 1em;
+  max-width: 40vw;
+
+}
+
+.custom-select-container {
+  position: relative;
+  width: 30vw; /* Set width to 80% of viewport width */
+  
+}
+
+.custom-select {
+  appearance: none;
+  background-color: transparent;
+  border: transparent;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 4px;
+}
+.dropdown {
+  width: 1em;
+}
+.dropdown-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.5em;
+  transform: translateY(-50%);
+  pointer-events: none; 
+  color: #888; 
 }
 
 .p:hover {
   text-decoration: underline;
 }
 
-.h3 {
+/* .h3 {
   border-bottom: 1px solid #ddd;
   border-top: #ddd 1px solid;
   padding: 1em;
-}
+} */
 </style>

@@ -7,6 +7,7 @@ import NotFoundPage from '../views/PageNotFound.vue';
 import Login from '../views/LogIn.vue';
 import AboutPage from '../views/AboutView.vue';
 import SignUp from '../views/SignUp.vue';
+import FavView from '../views/FavView.vue';
 const routes = [
   {
     path: '/',
@@ -38,6 +39,11 @@ const routes = [
   {
     path: '/about',
     component: AboutPage
+  },
+  {
+    path: '/favourites',
+    name: 'favourites',
+    component: FavView
   }
 ]
 

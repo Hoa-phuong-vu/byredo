@@ -7,6 +7,7 @@
       <div class="links">
         <router-link to="/">Home</router-link>
         <router-link to="/products">Products</router-link>
+        
         <router-link to="/login"><img src="@/assets/login.svg" alt="login" class="cartImg-login"></router-link>
         <router-link to="/cart"><img src="@/assets/cart.svg" alt="logo" class="cartImg"></router-link>
       </div>

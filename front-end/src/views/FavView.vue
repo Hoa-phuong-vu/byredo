@@ -1,10 +1,16 @@
 <template>
-    <h1>Favourites</h1>
-    <div v-if="favItems.length > 0">
-      <FavProducts @remove-from-fav="removeFromFav($event)" :favItems="favItems" />
-    </div>
-    <div v-if="favItems.length === 0">
-      You currently have no items in your Favourites!
+    <div>
+      <h1>Favourites</h1>
+      <div v-if="isLoggedIn && favItems.length > 0">
+        <FavProducts @remove-from-fav="removeFromFav" :favItems="favItems" />
+      </div>
+      <div v-else-if="isLoggedIn && favItems.length === 0">
+        You currently have no items in your Favourites!
+      </div>
+      <div v-else>
+        Please <router-link to="/login">log in</router-link> to view your favourites.
+      </div>
+      <button v-if="isLoggedIn" @click="logout">Sign Out</button>
     </div>
   </template>
   
@@ -13,12 +19,13 @@
   import FavProducts from '@/components/FavProducts.vue';
   
   export default {
-    name: "FavouritesPage",
+    name: 'FavouritesPage',
     components: {
-        FavProducts,
+      FavProducts,
     },
     data() {
       return {
+        isLoggedIn: false,
         favItems: [],
       }
     },
@@ -28,11 +35,22 @@
         const updatedCart = response.data;
         this.favItems = updatedCart;
       },
+      async logout() {
+        localStorage.removeItem('isLoggedIn'); // Remove user authentication status
+        this.isLoggedIn = false;
+        this.$router.push('/login');
+      },
+      async fetchFavourites() {
+        const response = await axios.get('/api/users/103837395/fav');
+        this.favItems = response.data;
+      }
     },
     async created() {
-      const response = await axios.get('/api/users/103837395/fav');
-      const favItems = response.data;
-      this.favItems = favItems;
+      this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Check if user is logged in
+      if (this.isLoggedIn) {
+        await this.fetchFavourites();
+      }
     }
   }
   </script>
+  

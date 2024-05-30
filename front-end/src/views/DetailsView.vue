@@ -36,7 +36,8 @@ export default {
     return {
       product: {},
       cartItems: [],
-      favItems: []
+      favItems: [],
+      isLoggedIn: false
     };
   },
   computed: {
@@ -59,6 +60,11 @@ export default {
       this.cartItems = cartResponse.data;
     },
     async addToFavorites() {
+      if (!this.isLoggedIn) {
+        // Prompt user to log in if not logged in
+        alert('Please log in to add items to favorites.');
+        return;
+      }
       if (!this.itemIsInFavorites) {
         await axios.post('/api/users/103837395/fav', { id: this.$route.params.productId });
         const newFavItem = await axios.get(`/api/products/${this.$route.params.productId}`);
@@ -70,6 +76,8 @@ export default {
     PageNotFound
   },
   async created() {
+    this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    
     const response = await axios.get(`/api/products/${this.$route.params.productId}`);
     this.product = response.data;
 

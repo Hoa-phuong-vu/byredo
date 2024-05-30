@@ -28,6 +28,7 @@ export default {
             const { username, password } = this.input;
             if (username === 'admin' && password === 'testing') {
                 this.$router.replace({ name: 'favourites' });
+                localStorage.setItem('isLoggedIn', true); // Set user as logged in
             } else {
                 this.msg = 'Invalid username or password';
             }

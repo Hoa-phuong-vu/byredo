@@ -191,3 +191,30 @@
   .cartImg-login {
     width: 1.35em;
   }
+
+  .login {
+    width: 50em;
+    background-color: white;
+    height: auto;
+    margin: 2em auto;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em 10em;
+    gap: 1.2em;
+}
+
+input {
+    border: none;
+    font-size: 1.3em;
+    padding: 0.5em;
+}
+
+h3 {
+    color: black;
+}

@@ -4,7 +4,7 @@
         <div class="input">
             <input v-model="input.username" type="email" name="email" id="email" placeholder="Username" required>
             <input v-model="input.password" type="password" name="password" id="password" placeholder="Password" required>
-            <button class="btn btn-success" @click.prevent="login">LOGIN</button>
+            <button class="btn btn-success" @click="login">LOGIN</button>
             <router-link to="/signup"><h3>CREATE ACCOUNT</h3></router-link>
         </div>
         <div v-if="msg" class="alert alert-danger mt-3">{{ msg }}</div>

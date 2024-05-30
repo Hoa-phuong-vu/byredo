@@ -1,5 +1,6 @@
 <template>
     <div>
+      <button v-if="isLoggedIn" @click="logout">Sign Out</button>
       <h1>Favourites</h1>
       <div v-if="isLoggedIn && favItems.length > 0">
         <FavProducts @remove-from-fav="removeFromFav" :favItems="favItems" />
@@ -10,7 +11,6 @@
       <div v-else>
         Please <router-link to="/login">log in</router-link> to view your favourites.
       </div>
-      <button v-if="isLoggedIn" @click="logout">Sign Out</button>
     </div>
   </template>
   

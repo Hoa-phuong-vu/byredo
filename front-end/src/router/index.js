@@ -41,7 +41,7 @@ const routes = [
     component: AboutPage
   },
   {
-    path: '/favourites',
+    path: '/fav',
     name: 'favourites',
     component: FavView
   }

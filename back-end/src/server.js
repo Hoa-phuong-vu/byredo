@@ -24,6 +24,10 @@ async function start() {
     return Promise.all(ids.map(id => db.collection('products').findOne({ id })));
   }
 
+  async function populateFavoriteItems(ids) {
+    return Promise.all(ids.map(id => db.collection('products').findOne({ id })));
+  }
+
   app.get('/api/users/:userId/cart', async (req, res) => {
     const user = await db.collection('users').findOne({ id: req.params.userId });
     const populatedCart = await populateCartIds(user.cartItems);
@@ -49,6 +53,7 @@ async function start() {
     res.json(populatedCart);
   });
 
+
   app.delete('/api/users/:userId/cart/:productId', async(req, res) => {
     const userId = req.params.userId;
     const productId = req.params.productId;
@@ -60,6 +65,41 @@ async function start() {
     const user = await db.collection('users').findOne({ id: req.params.userId });
     const populatedCart = await populateCartIds(user.cartItems);
     res.json(populatedCart);
+  });
+
+
+  //favourites
+  app.get('/api/users/:userId/fav', async (req, res) => {
+    const user = await db.collection('users').findOne({ id: req.params.userId });
+    const populatedFav = await populateFavoriteItems(user.favItems);
+    res.json(populatedFav);
+  });
+
+  app.post('/api/users/:userId/fav', async(req, res) => {
+    const userId = req.params.userId;
+    const productId = req.body.id;
+
+    await db.collection('users').updateOne({id: userId}, {
+      $addToSet: {favItems: productId},
+    });
+    
+    const user = await db.collection('users').findOne({ id: req.params.userId });
+    const populatedFav = await populateFavoriteItems(user.favItems);
+    res.json(populatedFav);
+  });
+
+
+  app.delete('/api/users/:userId/fav/:productId', async(req, res) => {
+    const userId = req.params.userId;
+    const productId = req.params.productId;
+
+    await db.collection('users').updateOne({id: userId}, {
+      $pull: {favItems: productId},
+    });
+
+    const user = await db.collection('users').findOne({ id: req.params.userId });
+    const populatedFav = await populateFavoriteItems(user.favItems);
+    res.json(populatedFav);
   });
 
   app.listen(8000, () => {

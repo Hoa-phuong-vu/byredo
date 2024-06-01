@@ -2,7 +2,7 @@
   <h1>Shopping Cart</h1>
   <div v-if="cartItems.length > 0">
     <CartList @remove-from-cart="removeFromCart($event)" :cartItems="cartItems" />
-    <button class="checkout-button">Proceed to Checkout</button>
+    <button class="checkout-button" @click="checkout">Proceed to Checkout</button>
   </div>
   <div v-if="cartItems.length === 0">
     You current have no items in your cart!
@@ -29,11 +29,23 @@ export default {
       const updatedCart = response.data;
       this.cartItems = updatedCart;
     },
+    async checkout() {
+
+        await axios.delete(`/api/users/103837395/cart`);
+        this.cartItems = [];
+        // Navigate to the purchase page
+        this.$router.push('/purchase');
+    }
   },
   async created() {
-    const response = await axios.get('/api/users/103837395/cart');
-    const cartItems = response.data;
-    this.cartItems = cartItems;
+    try {
+      const response = await axios.get('/api/users/103837395/cart');
+      const cartItems = response.data;
+      this.cartItems = cartItems;
+    } catch (error) {
+      console.error('Error fetching cart items:', error);
+      // Handle error
+    }
   }
 }
 </script>

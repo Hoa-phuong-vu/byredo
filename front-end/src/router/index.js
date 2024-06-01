@@ -4,10 +4,10 @@ import ProductsView from '../views/ProductsView.vue';
 import CartView from '../views/CartView.vue';
 import DetailsView from '../views/DetailsView.vue';
 import NotFoundPage from '../views/PageNotFound.vue';
-import Login from '../views/LogIn.vue';
-import AboutPage from '../views/AboutView.vue';
+import Login from '../views/LogIn.vue'; 
 import SignUp from '../views/SignUp.vue';
 import FavView from '../views/FavView.vue';
+import Purchase from '../views/PurchaseView.vue';
 const routes = [
   {
     path: '/',
@@ -30,6 +30,7 @@ const routes = [
   },
   {
     path: '/login',
+    name: 'login',
     component: Login
   },
   {
@@ -37,13 +38,13 @@ const routes = [
     component: SignUp
   },
   {
-    path: '/about',
-    component: AboutPage
-  },
-  {
     path: '/fav',
     name: 'favourites',
     component: FavView
+  },
+  {
+    path: '/purchase',
+    component: Purchase
   }
 ]
 

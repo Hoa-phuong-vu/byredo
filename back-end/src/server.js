@@ -102,6 +102,23 @@ async function start() {
     res.json(populatedFav);
   });
 
+  app.delete('/api/users/:userId/cart', async (req, res) => {
+    const userId = req.params.userId;
+  
+    try {
+      // Update the user document to remove all cart items
+      await db.collection('users').updateOne({ id: userId }, { $set: { cartItems: [] } });
+      
+      // Send a success response
+      res.status(204).send();
+    } catch (error) {
+      // If an error occurs, send an error response
+      console.error('Error deleting cart items:', error);
+      res.status(500).json({ error: 'An error occurred while deleting cart items' });
+    }
+  });
+  
+
   app.listen(8000, () => {
     console.log('Server is listening on port 8000')
   });

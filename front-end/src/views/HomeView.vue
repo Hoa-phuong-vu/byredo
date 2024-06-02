@@ -23,7 +23,7 @@
       </div>
     </div>
       <h1 class="text">LUXURIOUS</h1>
-   </div>
+  </div>
 </template>
 
 <script>
@@ -107,19 +107,7 @@ export default {
   background-color: #e0e0e088;
   padding:1em 4em;
 }
-.one {
-  display: flex;
-  flex-direction: column;
-  gap: 3em;
-  width: 15em;
-}
 
-.two {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding:1.5em 10em;
-}
 .random {
   width: 20em;
 }
@@ -128,6 +116,32 @@ export default {
   font-size: 5rem;
   font-weight: 200;
   padding: 0;
+}
+.two {
+  display: flex;
+  flex-direction: column;
+  }
+.one {
+  display: flex;
+  flex-direction: column;
+  }
+
+/* desktop */
+@media screen and (min-width: 1200px) {
+  .one {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  width: 15em;
+}
+
+.two {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding:1.5em 10em;
+}
 }
 </style>
 

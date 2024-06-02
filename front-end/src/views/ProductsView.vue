@@ -1,5 +1,8 @@
 <template>
   <div>
+      <div class="search">
+        <input type="text" v-model="searchQuery" placeholder="Search products..." class="searchbox">
+      </div>
     <h1>ALL PRODUCTS</h1>
     <div class="filter">
       <h3 class="h3">Filter</h3>
@@ -45,6 +48,7 @@ export default {
       filter: 'All',
       sortOrder: 'Ascending',
       filteredProducts: [],
+      searchQuery: '', 
     }
   },
   async created() {
@@ -67,16 +71,41 @@ export default {
       } else if (this.sortOrder === 'Descending') {
         this.filteredProducts.sort((a, b) => (a.price < b.price) ? 1 : -1);
       }
+    },
+    searchProducts() {
+      if (this.searchQuery.trim() === '') {
+        // If search query is empty, show all products
+        this.filteredProducts = this.products;
+      } else {
+        // Filter products based on search query
+        this.filteredProducts = this.products.filter(product =>
+          product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
+      }
     }
   },
   watch: {
     filter: 'filterProducts',
-    sortOrder: 'sortProducts'
+    sortOrder: 'sortProducts',
+    searchQuery: 'searchProducts'
   }
 }
 </script>
 
 <style>
+.search {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+}
+
+.searchbox {
+  width: 80vw; /* Make the search input span 90% of viewport width */
+  padding: 0.5em; /* Add padding to the input */
+}
+
+
+
 .filter,
 .sort {
   display: flex;
@@ -118,9 +147,5 @@ export default {
   text-decoration: underline;
 }
 
-/* .h3 {
-  border-bottom: 1px solid #ddd;
-  border-top: #ddd 1px solid;
-  padding: 1em;
-} */
+
 </style>

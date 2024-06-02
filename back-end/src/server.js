@@ -15,6 +15,11 @@ async function start() {
 
   app.use('/images', express.static(path.join(__dirname, '../assets')));
 
+  app.use(express.static(
+    path.resolve(__dirname, '../dist'),
+    { maxAge: '1y', etag: false },
+  ));
+
   app.get('/api/products', async (req, res) => {
     const products = await db.collection('products').find({}).toArray();
     res.send(products);
@@ -118,9 +123,14 @@ async function start() {
     }
   });
   
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
+  });
 
-  app.listen(8000, () => {
-    console.log('Server is listening on port 8000')
+  const port = process.env.PORT || 8000;
+
+  app.listen(port, () => {
+    console.log('Server is listening on port ' + port)
   });
 }
 

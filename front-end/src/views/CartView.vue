@@ -49,3 +49,21 @@ export default {
   }
 }
 </script>
+
+
+<style>
+
+.checkout-button {
+    width: 95vw;
+    margin: 0.2em;
+  }
+
+
+@media screen and (min-width:900px){
+  .checkout-button {
+    width: 95vw;
+    margin: 1em;
+  }
+}
+
+</style>

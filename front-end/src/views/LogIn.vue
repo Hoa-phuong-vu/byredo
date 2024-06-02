@@ -40,6 +40,52 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Add your styles here */
+<style>
+.login {
+    width: 90vw;
+    background-color: white;
+    height: auto;
+    margin: 2em auto;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em;
+    gap: 1.2em;
+}
+
+input {
+    border: none;
+    font-size: 1.3em;
+    padding: 0.5em;
+}
+
+@media screen and (min-width: 900px) {
+    .login {
+    width: 50vw;
+    background-color: white;
+    height: auto;
+    margin: 2em auto;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em;
+    gap: 1.2em;
+}
+
+input {
+    border: none;
+    font-size: 1.3em;
+    padding: 0.5em;
+}
+}
 </style>

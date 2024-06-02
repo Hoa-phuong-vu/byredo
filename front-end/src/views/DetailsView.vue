@@ -89,3 +89,46 @@ export default {
   }
 };
 </script>
+
+
+<style>
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    width: 29.7em;
+    background-color: white;
+    height: fit-content;
+    margin-top: 32px;
+    border-radius: 5px;
+    justify-content: center;
+    align-self: center;
+  }
+
+@media screen and (min-width: 900px) {
+
+  .container {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    width: 29.7em;
+    background-color: white;
+    height: fit-content;
+    margin-top: 32px;
+    border-radius: 5px;
+    gap: 1em;
+  }
+}
+
+</style>
